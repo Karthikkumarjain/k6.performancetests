@@ -6,21 +6,24 @@ export const options = {
     stages: [
  
         {
-            duration: '2m',
-            target: 10000
+            duration: '5m',
+            target: 1000
  
         },
-     
         {
-            duration: '1m',
+            duration: '8h',
+            target: 1000
+ 
+        },
+        {
+            duration: '5m',
             target: 0
  
         }
     ]
 }
  
-
-
+ 
 export default function () {
  
     const url = ""; // put endpoint here
@@ -50,5 +53,4 @@ export default function () {
     //console.log(res.body);
  
     console.log(res.json("Data.0.Attribute")); // https://github.com/tidwall/gjson#path-syntax
-
 }
