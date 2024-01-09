@@ -2,12 +2,30 @@ import http from "k6/http";
 import { sleep, check } from "k6";
  
  
+// export const options = {
+//     insecureSkipTLSVerify:true,
+//    // noonnecationReuse: false,
+//     executor: 'per-vu-iterations', //per-vu-iterations //shared-iterations
+//     vus: 1,
+//     iterations: 5,
+//     duration: '1s'
+// }
+
+
 export const options = {
-    executor: 'per-vu-iterations', //per-vu-iterations //shared-iterations
-    vus: 1,
-    iterations: 1,
-    duration: '1s'
-}
+    insecureSkipTLSVerify:true,
+    scenarios: {
+        
+      constant_request_rate: {
+        executor: 'constant-arrival-rate',
+        rate: 3,
+        //timeUnit: '1s',
+        duration: '5s',
+        preAllocatedVUs: 5,
+        maxVUs: 10,
+      },
+    },
+  };
  
  
 export default function () {
