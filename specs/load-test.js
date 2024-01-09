@@ -1,3 +1,8 @@
+/*
+Load testing is primarily concerned with assessing the current performance of the system in terms of concurrent users or requests per second
+*/
+
+
 import http from "k6/http";
 import { sleep, check } from "k6";
  
@@ -20,8 +25,13 @@ export const options = {
             target: 0
  
         }
-    ]
-}
+    ],
+    thresholds: {
+        http_req_duration: ['p(95)<150'],
+        http_req_failed: ['rate<0.01']
+
+    },
+};
  
  
 export default function () {
