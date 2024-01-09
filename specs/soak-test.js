@@ -1,3 +1,8 @@
+/*
+Soak testing is used to validate reliability of the system over a long time
+*/
+
+
 import http from "k6/http";
 import { sleep, check } from "k6";
  
