@@ -1,20 +1,51 @@
+/*
+Spike test is a variation of a stress test, but it does not gradually increase the load, isntead it spikes to extreme load oveer a very short window of time.
+This helps in determining how the system will perform under a sudden surge of traffic and to see if system recovers once the traffic has subsided
+
+*/ 
+
 import http from "k6/http";
 import { sleep, check } from "k6";
  
  
 export const options = {
     stages: [
- 
+
+
         {
-            duration: '2m',
-            target: 10000
- 
+            duration: '10s',
+            target: 100
+
         },
-     
         {
             duration: '1m',
+            target: 100
+
+        },
+        {
+            duration: '10s',
+            target: 1400
+
+        },
+      
+        {
+            duration: '3m',
+            target: 1400
+
+        },
+        {
+            duration: '10s',
+            target: 100
+
+        },
+        {
+            duration: '3m',
+            target: 100
+
+        },{
+            duration: '10s',
             target: 0
- 
+
         }
     ]
 }
