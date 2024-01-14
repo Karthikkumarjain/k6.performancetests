@@ -25,7 +25,15 @@ export const options = {
             target: 0
  
         }
-    ]
+    ],  thresholds: {
+        http_req_duration: [
+          {
+            threshold: "p(95)<150",
+            abortOnFail: true,
+          },
+        ],
+        http_req_failed: ["rate<0.01"],
+      },
 }
  
  
